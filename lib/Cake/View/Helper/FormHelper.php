@@ -1650,7 +1650,7 @@ class FormHelper extends AppHelper {
 			if ($disabled && (!is_array($disabled) || in_array((string)$optValue, $disabled, !$isNumeric))) {
 				$optionsHere['disabled'] = true;
 			}
-			$tagName = $attributes['id'] . $this->domIdSuffix($optValue);
+			$tagName = Inflector::camelize($attributes['id']) . $this->domIdSuffix($optValue);
 
 			if ($label) {
 				$labelOpts = is_array($label) ? $label : array();
@@ -2920,7 +2920,7 @@ class FormHelper extends AppHelper {
 					if ($attributes['style'] === 'checkbox') {
 						$htmlOptions['value'] = $name;
 
-						$tagName = $attributes['id'] . $this->domIdSuffix($name);
+						$tagName = Inflector::camelize($attributes['id']) . $this->domIdSuffix($name);
 						$htmlOptions['id'] = $tagName;
 						$label = array('for' => $tagName);
 
